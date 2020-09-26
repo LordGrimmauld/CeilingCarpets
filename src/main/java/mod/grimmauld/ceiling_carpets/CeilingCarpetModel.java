@@ -62,7 +62,7 @@ public class CeilingCarpetModel extends BakedModelWrapper<IBakedModel> {
 			data[j + 1] = Float.floatToIntBits(1 - Float.intBitsToFloat(data[j + 1]));
 			data[j + xZMirror] = Float.floatToIntBits(1 - Float.intBitsToFloat(data[j + xZMirror]));
 		}
-		return new BakedQuad(data, bakedQuad.getTintIndex(), bakedQuad.getFace().getOpposite(), bakedQuad.func_187508_a(), bakedQuad.shouldApplyDiffuseLighting());
+		return new BakedQuad(data, bakedQuad.getTintIndex(), bakedQuad.getFace().getOpposite(), bakedQuad.func_187508_a(), bakedQuad.func_239287_f_());
 	}
 
 	@Override

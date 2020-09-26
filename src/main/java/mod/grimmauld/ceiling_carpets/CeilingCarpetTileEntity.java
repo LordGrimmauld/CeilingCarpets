@@ -39,10 +39,10 @@ public class CeilingCarpetTileEntity extends TileEntity {
 	}
 
 	@Override
-	public void read(CompoundNBT compound) {
+	public void read(BlockState state, CompoundNBT compound) {
 		BlockState before = carpetBlock;
 		carpetBlock = NBTUtil.readBlockState(compound.getCompound("CarpetBlock"));
-		super.read(compound);
+		super.read(state, compound);
 		if (!before.equals(carpetBlock))
 			requestModelDataUpdate();
 	}
@@ -76,8 +76,8 @@ public class CeilingCarpetTileEntity extends TileEntity {
 	}
 
 	@Override
-	public void handleUpdateTag(CompoundNBT tag) {
-		read(tag);
+	public void handleUpdateTag(BlockState state, CompoundNBT tag) {
+		read(state, tag);
 	}
 
 	@Override
@@ -87,6 +87,6 @@ public class CeilingCarpetTileEntity extends TileEntity {
 
 	@Override
 	public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
-		read(pkt.getNbtCompound());
+		read(getBlockState(), pkt.getNbtCompound());
 	}
 }

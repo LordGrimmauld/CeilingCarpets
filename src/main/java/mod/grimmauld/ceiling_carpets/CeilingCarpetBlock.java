@@ -13,6 +13,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.loot.LootContext;
+import net.minecraft.loot.LootParameters;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -26,8 +28,6 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraft.world.storage.loot.LootContext;
-import net.minecraft.world.storage.loot.LootParameters;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -75,11 +75,6 @@ public class CeilingCarpetBlock extends Block {
 	@Override
 	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
 		return new CeilingCarpetTileEntity();
-	}
-
-	@Override
-	public MaterialColor getMaterialColor(BlockState state, IBlockReader worldIn, BlockPos pos) {
-		return getCarpetState(worldIn, pos).getMaterialColor(worldIn, pos);
 	}
 
 	@Nullable
@@ -172,7 +167,7 @@ public class CeilingCarpetBlock extends Block {
 	}
 
 	@Override
-	public float getBlockHardness(BlockState blockState, IBlockReader worldIn, BlockPos pos) {
-		return getCarpetState(worldIn, pos).getBlockHardness(worldIn, pos);
+	public float getPlayerRelativeBlockHardness(BlockState state, PlayerEntity player, IBlockReader worldIn, BlockPos pos) {
+		return getCarpetState(worldIn, pos).getPlayerRelativeBlockHardness(player, worldIn, pos);
 	}
 }
