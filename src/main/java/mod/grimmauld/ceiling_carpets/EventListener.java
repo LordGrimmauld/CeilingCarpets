@@ -94,10 +94,11 @@ public class EventListener {
 
 		BlockPos pos = event.getPos().offset(event.getFace(), 1);
 		World world = event.getWorld();
+		if (!world.getBlockState(pos).isAir(world, pos))
+			return;
 		BlockState ceilingCarpetState = RegistryEntries.CEILING_CARPET_BLOCK.getDefaultState();
 		if (!RegistryEntries.CEILING_CARPET_BLOCK.isValidPosition(ceilingCarpetState, world, pos))
 			return;
-		// TODO: Fix replacing of non-full blocks
 		world.setBlockState(pos, ceilingCarpetState);
 		TileEntity te = world.getTileEntity(pos);
 		if (te instanceof CeilingCarpetTileEntity) {

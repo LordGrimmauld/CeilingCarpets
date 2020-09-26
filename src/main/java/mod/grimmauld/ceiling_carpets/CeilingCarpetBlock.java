@@ -1,6 +1,5 @@
 package mod.grimmauld.ceiling_carpets;
 
-
 import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -105,8 +104,7 @@ public class CeilingCarpetBlock extends Block {
 
 	@Override
 	public SoundType getSoundType(BlockState state, IWorldReader world, BlockPos pos, @Nullable Entity entity) {
-		CeilingCarpetTileEntity te = getTileEntity(world, pos);
-		return super.getSoundType(te != null ? te.getCarpetBlock() : state, world, pos, entity);
+		return getCarpetState(world, pos).getSoundType(world, pos, entity);
 	}
 
 	@Override
@@ -176,16 +174,5 @@ public class CeilingCarpetBlock extends Block {
 	@Override
 	public float getBlockHardness(BlockState blockState, IBlockReader worldIn, BlockPos pos) {
 		return getCarpetState(worldIn, pos).getBlockHardness(worldIn, pos);
-	}
-
-	@Override
-	@OnlyIn(Dist.CLIENT)
-	public boolean isSideInvisible(BlockState state, BlockState adjacentBlockState, Direction side) {
-		return false;
-	}
-
-	@Override
-	public boolean isNormalCube(BlockState state, IBlockReader worldIn, BlockPos pos) {
-		return false;
 	}
 }
