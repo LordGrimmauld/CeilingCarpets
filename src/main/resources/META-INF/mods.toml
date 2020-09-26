@@ -1,0 +1,27 @@
+modLoader = "javafml"
+license="MIT license"
+loaderVersion = "[31,)"
+#issueTrackerURL=""
+
+[[mods]]
+modId = "ceiling_carpets"
+version = "0.0.1"
+displayName = "Ceiling Carpets"
+#updateJSONURL=""
+authors = "Grimmauld"
+description = '''
+Put carpets on ceilings'''
+
+[[dependencies.ceiling_carpets]]
+modId = "forge"
+mandatory = true
+versionRange = "[31.2.0,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.ceiling_carpets]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.15.2]"
+ordering = "NONE"
+side = "BOTH"
