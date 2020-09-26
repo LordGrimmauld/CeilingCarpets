@@ -22,6 +22,6 @@ side = "BOTH"
 [[dependencies.ceiling_carpets]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.16.1]"
+versionRange = "[1.16.1,1.16.3]"
 ordering = "NONE"
 side = "BOTH"
